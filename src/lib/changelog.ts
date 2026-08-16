@@ -11,6 +11,61 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: "6.6.3",
+    date: "2026-06-26",
+    added: [
+    "🔍 Nyaa 搜索与下载导出：支持 Nyaa 种子站搜索及下载链接导出",
+    "🔐 PanSou 认证支持：新增盘搜身份认证，支持需要登录的私有搜索接口",
+    "🖼️ Bangumi 图片代理：新增 Bangumi 封面图片代理，支持用户自选代理方式",
+    "🏠 HomeBanner TMDB Logo：首页 HeroBanner 新增 TMDB logo 展示及撤销删除功能",
+    "📺 Bangumi 集成增强：管理员缓存管理器新增 Bangumi 独立缓存分类，移动端操作面板展示番剧详情",
+    "🌐 EdgeOne 部署支持：新增腾讯云 EdgeOne 部署方案及构建脚本",
+    "📡 TVBox 代理增强：新增 TVBox/Video 代理端点配置、detail 接口及剧集标题格式化",
+    "🎬 视频分辨率推断与筛选：自动推断视频流分辨率并支持按分辨率筛选",
+    "🌍 翻译插件检测警告：检测到浏览器翻译插件时弹出友好提示 Toast",
+    "🔑 自定义 X-Emby-Authorization 请求头：支持用户自定义 Emby 鉴权请求头",
+    "🏗️ Next.js 构建阶段环境标志：standalone 模式新增构建阶段环境变量标记"
+    ],
+    changed: [
+    "📦 @mui/material 升级至 9.1.2",
+    "📦 @tanstack/react-virtual 升级至 3.14.4",
+    "📦 TanStack Query 升级至 5.101.0"
+    ],
+    fixed: [
+    "🛡️ 翻译插件 DOM 崩溃防护：为页面根容器加 `translate='no'` 并用 DOMErrorBoundary 包裹内容，多层防止浏览器翻译插件修改 DOM 导致 React 崩溃；ErrorBoundary 新增 removeChild 错误自动恢复",
+    "🌐 Bangumi CN 区修复：修复中国区 API 被拦截导致首页崩溃问题，新增多层智能降级策略；修复 useState 初始值、localStorage 重置及管理面板缺少默认 cmliussss 的问题；修复服务端日历 API 返回非数组时的错误",
+    "📺 短剧数据源修复：迁移短剧 API 数据源并支持子分类，首页热门短剧返回空时自动切换至第一个非空子分类，当前分类无结果时自动跳转下一分类",
+    "🐛 豆瓣数据清理：过滤推荐 API 返回的广告及播放列表条目，过滤列表中 null/undefined 条目防止 renderItem 崩溃",
+    "⏩ 快进/快退图标方向修复：修复播放器快进快退按钮图标方向错误",
+    "🖼️ 分辨率与 TMDB Logo 修复：修复下游解析层分辨率标注问题；优化 TMDB logo 在深色背景的显示效果，防止溢出",
+    "🎨 播放器锁定模式：锁定模式下彻底隐藏控制栏背景",
+    "⚡ 卡片点击性能优化：优化卡片点击响应速度并加强 DOM 错误追踪",
+    "🔧 代理端口转发修复：修复代理层端口转发问题"
+    ]
+  },
+  {
+    version: "6.6.2",
+    date: "2026-05-30",
+    added: [
+    "🎬 PlayInfoPanel Hero Banner：新增 TMDB backdrop 背景图、logo 图片、海报、评分、简介展示，支持多季徽章（共X季）",
+    "🔍 豆瓣快速信息面板：新增豆瓣 quick-info 和 suggest API，MobileActionSheet 接入豆瓣详情",
+    "🌐 豆瓣代理新增 cmliussss 统一 CDN 选项",
+    "🗄️ TMDB 服务端缓存：TMDB backdrop API 新增 db.getCache/setCache 服务端缓存（tmdb- 前缀，24小时 TTL），与管理员缓存管理集成"
+    ],
+    changed: [
+    "🎬 PlayInfoPanel 重构：以 TMDB backdrop 为主视觉，TMDB logo/poster/评分/简介优先展示，收藏按钮移至简介下方",
+    "🔍 TMDB 搜索优化：自动清理标题中的「第X季」「Season X」「S1」「年份」等后缀；移除年份参数避免年份不一致导致搜索失败；根据 stype（movie/tv）只搜对应端点，避免电视剧搜到同名电影",
+    "🐛 TMDB 与豆瓣数据获取完全独立：移除 loadingMovieDetails 守卫，两者并行加载互不阻塞",
+    "📺 直播频道展开触发区域：缩小为仅 chevron 按钮触发展开，避免误触"
+    ],
+    fixed: [
+    "📺 直播错误覆盖：在 artplayer ready 事件清除 unsupportedType，频道慢速连接成功后不再显示错误覆盖层",
+    "🔧 直播频道健康检查：修复 directPlaybackEnabled 未加入 useCallback 依赖导致的问题",
+    "⚡ 管理员播放统计 API：并行化每用户数据库查询，提升性能",
+    "📱 登入详情卡片：修复移动端地区徽章溢出问题，优化登入 IP/设备信息响应式布局"
+    ]
+  },
+  {
     version: "6.6.1",
     date: "2026-05-29",
     added: [
